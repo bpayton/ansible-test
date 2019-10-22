@@ -1,5 +1,6 @@
 --- 
 - name: Register RHEL system and enable repos
+  hosts: all
   become: yes
   gather_facts: yes
   vars_files:
