@@ -1,0 +1,34 @@
+--- 
+- name: Register RHEL system and enable repos
+  become: yes
+  gather_facts: yes
+  vars_files:
+    - vars/vault        
+
+  tasks:
+    - name: Subscribe with RHSN
+      redhat_subscription:
+        state: present
+        username: "{{ rhn_user }}"
+        password: "{{ rhn_pass }}"
+        pool_ids: "{{ pool_id }}"
+
+  #   - name: Enable RHEL repos
+  #     rhsm_repository:
+  #       name: "{{ item }}"
+  #       state: enabled
+  #       loop:
+  #         - rhel-7-server-rpms
+  #         - rhel-server-rhscl-7-rpmsv
+  #         - rhel-7-server-satellite-tools-6.5-rpms
+  #         - rhel-7-server-extras-rpms
+
+  #   - name: Install katello
+  #     yum: 
+  #       name: katello-agent
+  #       state: latest
+    
+  #   - name: Install Insights
+  #     yum:
+  #       name: insights-client
+  #       state: latest
