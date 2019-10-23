@@ -4,9 +4,15 @@
   gather_facts: yes
   hosts: all
   vars_files:
+<<<<<<< HEAD
     - vars/vault
   roles:
    - { role: redhataccess.redhat-access-insights-client, when: ansible_distribution == "RedHat" }
+=======
+    - /root/sat-6-vault.yml
+#  roles:
+#   - { role: redhataccess.redhat-access-insights-client, when: ansible_distribution == "RedHat" }
+>>>>>>> 3d7b125de6c02c9af3d50b75c6205b56792fc8ef
   tasks:
     - block:
         - name: check to see if system is already registered
